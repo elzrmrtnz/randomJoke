@@ -7,4 +7,7 @@
 
 import Foundation
 
-
+struct JokeModel: Decodable {
+    let setup: String
+    let punchline: String
+}
