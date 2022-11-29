@@ -6,19 +6,32 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     
     private let vm = JokeVM()
     
-    private let label: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.text = "Loading joke..."
-        label.sizeToFit()
+    var jokes: JokeModel!
+    
+    private let setupLbl: UILabel = {
+        let setup = UILabel(frame: .zero)
+        setup.translatesAutoresizingMaskIntoConstraints = false
+        setup.numberOfLines = 0
+        setup.text = "Loading joke..."
+        setup.sizeToFit()
         
-        return label
+        return setup
+    }()
+    
+    private let punchLbl: UILabel = {
+        let punch = UILabel(frame: .zero)
+        punch.translatesAutoresizingMaskIntoConstraints = false
+        punch.numberOfLines = 0
+        punch.text = " "
+        punch.sizeToFit()
+        
+        return punch
     }()
     
     private let refreshBtn: UIButton = {
@@ -32,6 +45,8 @@ class ViewController: UIViewController {
         return button
     }()
     
+    
+    
     private let favoriteBtn: UIButton = {
         let button = CustomButton()
         button.configure(with: CustomButtonVM(text: "Favorite",
@@ -43,36 +58,25 @@ class ViewController: UIViewController {
         return button
     }()
     
-    private let navBar: UINavigationBar = {
-        let navBar = UINavigationBar()
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        
-        return navBar
-    }()
-    
-    private let navItem: UINavigationItem = {
-        let item = UINavigationItem()
-        item.title = "J🤣keApp"
-        item.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"),
-                                                  style: .plain,
-                                                  target: self,
-                                                  action: #selector(tapList))
-        
-        return item
-    }()
-    
+    private func navItems() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(tapList))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        view.addSubview(navBar)
-        navBar.setItems([navItem], animated: false)
+        view.backgroundColor = .systemMint
+        title = "J🤣keApp"
         
-        view.addSubview(label)
+        view.addSubview(setupLbl)
+        view.addSubview(punchLbl)
         view.addSubview(refreshBtn)
         view.addSubview(favoriteBtn)
         
+        navItems()
         setConstraints()
         
         Task {
@@ -83,12 +87,10 @@ class ViewController: UIViewController {
     private func loadData() async {
         await vm.getAJoke(url: Constants.Urls.randomJokes)
         guard let joke = vm.jokes.randomElement() else {return}
-        label.text = "\(joke.setup)\n\(joke.punchline)"
-        label.sizeToFit()
-    }
-    
-    @objc func tap() {
-        print("tapped")
+        setupLbl.text = joke.setup
+        punchLbl.text = joke.punchline
+        setupLbl.sizeToFit()
+        punchLbl.sizeToFit()
     }
     
     @objc func tapList() {
@@ -97,7 +99,8 @@ class ViewController: UIViewController {
     }
     
     @objc func tapFavorite() {
-        print(label.text)
+        let listVC = ListViewController()
+        listVC.addJoke(setup: setupLbl.text!, punch: punchLbl.text!)
     }
     
     @objc func refreshBtnTap() {
@@ -107,15 +110,12 @@ class ViewController: UIViewController {
     }
     
     private func setConstraints() {
-        navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        navBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        setupLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        setupLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        setupLbl.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        
-        label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        punchLbl.topAnchor.constraint(equalTo: setupLbl.bottomAnchor, constant: 10).isActive = true
+        punchLbl.leadingAnchor.constraint(equalTo: setupLbl.leadingAnchor).isActive = true
         
         refreshBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         refreshBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100).isActive = true
@@ -127,5 +127,4 @@ class ViewController: UIViewController {
         favoriteBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
         favoriteBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-    
 }

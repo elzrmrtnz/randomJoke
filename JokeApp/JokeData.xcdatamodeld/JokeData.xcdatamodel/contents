@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="JokeListItem" representedClassName="JokeListItem" syncable="YES">
-        <attribute name="joke" optional="YES" attributeType="String"/>
         <attribute name="punchline" optional="YES" attributeType="String"/>
+        <attribute name="setup" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="JokeListItem" positionX="-63" positionY="-18" width="128" height="59"/>

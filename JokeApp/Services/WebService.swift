@@ -25,7 +25,6 @@ class WebService:  NSObject {
         
         return try JSONDecoder().decode([JokeModel].self, from: data)
     }
-    
 }
     
 

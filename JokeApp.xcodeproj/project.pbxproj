@@ -14,7 +14,6 @@
 		CA50C77B292F21090083BC22 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C77A292F21090083BC22 /* JokeModel.swift */; };
 		CA50C780292F281B0083BC22 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C77F292F281B0083BC22 /* WebService.swift */; };
 		CA50C784292F8BAC0083BC22 /* JokeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C783292F8BAC0083BC22 /* JokeViewModel.swift */; };
-		CA50C78629306E2B0083BC22 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C78529306E2B0083BC22 /* Observable.swift */; };
 		CA7EB1492931D55900565C15 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1482931D55900565C15 /* CustomButton.swift */; };
 		CA7EB14B2931EEFD00565C15 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB14A2931EEFD00565C15 /* ListViewController.swift */; };
 		CA7EB14E29347F0600565C15 /* JokeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB14C29347F0600565C15 /* JokeData.xcdatamodeld */; };
@@ -22,6 +21,7 @@
 		CA7EB1912934A90A00565C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1902934A90A00565C15 /* Constants.swift */; };
 		CA7EB1942934CBA300565C15 /* JokeListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1922934CBA300565C15 /* JokeListItem+CoreDataClass.swift */; };
 		CA7EB1952934CBA300565C15 /* JokeListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1932934CBA300565C15 /* JokeListItem+CoreDataProperties.swift */; };
+		CA7EB1982935E5B000565C15 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1972935E5B000565C15 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,6 @@
 		CA50C77A292F21090083BC22 /* JokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
 		CA50C77F292F281B0083BC22 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		CA50C783292F8BAC0083BC22 /* JokeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewModel.swift; sourceTree = "<group>"; };
-		CA50C78529306E2B0083BC22 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		CA7EB1482931D55900565C15 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CA7EB14A2931EEFD00565C15 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		CA7EB14D29347F0600565C15 /* JokeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokeData.xcdatamodel; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		CA7EB1902934A90A00565C15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CA7EB1922934CBA300565C15 /* JokeListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JokeListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CA7EB1932934CBA300565C15 /* JokeListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JokeListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CA7EB1972935E5B000565C15 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +78,12 @@
 				CA50C779292F20B50083BC22 /* View Model */,
 				CA50C778292F20AF0083BC22 /* View */,
 				CA50C777292F20AA0083BC22 /* Model */,
+				CA7EB1992935F3CB00565C15 /* Services */,
 				CA50C761292E05BC0083BC22 /* AppDelegate.swift */,
 				CA50C763292E05BC0083BC22 /* SceneDelegate.swift */,
 				CA50C76A292E05C20083BC22 /* Assets.xcassets */,
 				CA50C76C292E05C20083BC22 /* LaunchScreen.storyboard */,
 				CA50C76F292E05C20083BC22 /* Info.plist */,
-				CA7EB1902934A90A00565C15 /* Constants.swift */,
-				CA50C77F292F281B0083BC22 /* WebService.swift */,
-				CA50C78529306E2B0083BC22 /* Observable.swift */,
 				CA7EB14C29347F0600565C15 /* JokeData.xcdatamodeld */,
 			);
 			path = JokeApp;
@@ -121,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7EB1482931D55900565C15 /* CustomButton.swift */,
+				CA7EB1972935E5B000565C15 /* CustomCell.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -132,6 +131,15 @@
 				CA7EB1932934CBA300565C15 /* JokeListItem+CoreDataProperties.swift */,
 			);
 			path = JokeListItem;
+			sourceTree = "<group>";
+		};
+		CA7EB1992935F3CB00565C15 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA7EB1902934A90A00565C15 /* Constants.swift */,
+				CA50C77F292F281B0083BC22 /* WebService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,13 +217,13 @@
 				CA7EB1942934CBA300565C15 /* JokeListItem+CoreDataClass.swift in Sources */,
 				CA50C784292F8BAC0083BC22 /* JokeViewModel.swift in Sources */,
 				CA50C77B292F21090083BC22 /* JokeModel.swift in Sources */,
-				CA50C78629306E2B0083BC22 /* Observable.swift in Sources */,
 				CA7EB1912934A90A00565C15 /* Constants.swift in Sources */,
 				CA7EB1952934CBA300565C15 /* JokeListItem+CoreDataProperties.swift in Sources */,
 				CA7EB1492931D55900565C15 /* CustomButton.swift in Sources */,
 				CA7EB14B2931EEFD00565C15 /* ListViewController.swift in Sources */,
 				CA50C762292E05BC0083BC22 /* AppDelegate.swift in Sources */,
 				CA7EB14E29347F0600565C15 /* JokeData.xcdatamodeld in Sources */,
+				CA7EB1982935E5B000565C15 /* CustomCell.swift in Sources */,
 				CA50C764292E05BC0083BC22 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,11 +361,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JokeApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = I;
+				INFOPLIST_KEY_CFBundleDisplayName = JokeApp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -381,11 +390,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JokeApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = I;
+				INFOPLIST_KEY_CFBundleDisplayName = JokeApp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
