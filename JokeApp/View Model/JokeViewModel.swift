@@ -8,17 +8,55 @@
 import Foundation
 import Combine
 
-class JokeVM: NSObject {
+class JokeViewModel {
+    private var cancellables = Set<AnyCancellable>()
     
-    private(set) var jokes: [JokeModel] = []
-    
-    func getAJoke(url: URL) async {
-        do {
-            let jokes = try await WebService().getJokes(url: url)
-            self.jokes = jokes
-        } catch {
-            print(error)
-        }
+    enum Input {
+        case viewDidAppear
+        case refreshButtonTap
     }
     
+    enum Output {
+        case fetchJokeDidFail(error:Error)
+        case fetchJokeDidSucceed(joke: [JokeModel])
+        case toggleButton(isEnabled:Bool)
+        case toggleLoading(loading: Bool)
+    }
+    
+    private let jokeServiceType: JokeServiceType
+    private let output : PassthroughSubject<Output, Never> = .init()
+    
+    init(jokeServiceType: JokeServiceType = JokeService()) {
+        self.jokeServiceType = jokeServiceType
+    }
+    
+    func getRandomJoke(){
+        output.send(.toggleLoading(loading: true))
+        output.send(.toggleButton(isEnabled: false))
+        jokeServiceType.getRandomJoke().sink { [weak self] completion in
+            self?.output.send(.toggleLoading(loading: false))
+            self?.output.send(.toggleButton(isEnabled: true))
+            switch completion {
+            case .failure(let error):
+
+                self?.output.send(.fetchJokeDidFail(error: error))
+            case .finished:
+                debugPrint("Random joke received")
+            }
+        } receiveValue: { [weak self] joke in
+            self?.output.send(.fetchJokeDidSucceed(joke: joke))
+        }.store(in: &cancellables)
+    }
+    
+    func transform(input: AnyPublisher<Input, Never>) -> AnyPublisher<Output, Never>{
+
+        input.sink { [weak self] event in
+            switch event{
+            case .refreshButtonTap, .viewDidAppear:
+                self?.getRandomJoke()
+            }
+        }.store(in: &cancellables)
+        return output.eraseToAnyPublisher()
+    }
 }
+

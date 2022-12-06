@@ -3,6 +3,11 @@
     <entity name="JokeListItem" representedClassName="JokeListItem" syncable="YES">
         <attribute name="punchline" optional="YES" attributeType="String"/>
         <attribute name="setup" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="setup"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="JokeListItem" positionX="-63" positionY="-18" width="128" height="59"/>

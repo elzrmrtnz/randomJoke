@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 
-import UIKit
-
 class CustomCell: UITableViewCell {
+    static let identifier = "CustomCell"
 
     let setup = UILabel()
     let puncline = UILabel()
@@ -18,7 +17,6 @@ class CustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // Set any attributes of your UI components here.
         setup.translatesAutoresizingMaskIntoConstraints = false
         setup.numberOfLines = 5
         setup.sizeToFit()
@@ -26,7 +24,6 @@ class CustomCell: UITableViewCell {
         puncline.translatesAutoresizingMaskIntoConstraints = false
         puncline.sizeToFit()
         
-        // Add the UI components
         contentView.addSubview(setup)
         contentView.addSubview(puncline)
         

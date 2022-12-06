@@ -9,17 +9,15 @@ import UIKit
 import CoreData
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         
         return table
     }()
     
-    private var models = [JokeListItem]()
+    private let coreData = JokeDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,26 +25,27 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         title = "Favorite Joke List"
         
         view.addSubview(tableView)
-        getAllJokes()
+        coreData.getAllJokes()
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
         
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "customCell")
+        
         tableView.rowHeight = 100
         tableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        return coreData.jokeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
+        let model = coreData.jokeList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
         cell.setup.text = model.setup
         cell.puncline.text = model.punchline
+        
         return cell
     }
     
@@ -57,46 +56,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func  tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            let model = models[indexPath.row]
-            self.deleteJoke(item: model)
+            let model = coreData.jokeList[indexPath.row]
+            coreData.deleteJoke(item: model)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             tableView.endUpdates()
-        }
-    }
-    
-    func getAllJokes() {
-        do {
-            models = try context.fetch(JokeListItem.fetchRequest())
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } catch {
-            //error
-        }
-    }
-    
-    func addJoke(setup: String, punch: String) {
-        let newJoke = JokeListItem(context: context)
-        newJoke.setup = setup
-        newJoke.punchline = punch
-        
-        saveData()
-    }
-
-    func deleteJoke(item: JokeListItem) {
-        context.delete(item)
-        
-        saveData()
-    }
-    
-    func saveData() {
-        do {
-            try context.save()
-            getAllJokes()
-        } catch {
-            
         }
     }
 }

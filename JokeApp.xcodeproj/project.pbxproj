@@ -18,10 +18,10 @@
 		CA7EB14B2931EEFD00565C15 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB14A2931EEFD00565C15 /* ListViewController.swift */; };
 		CA7EB14E29347F0600565C15 /* JokeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB14C29347F0600565C15 /* JokeData.xcdatamodeld */; };
 		CA7EB18629349D8300565C15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB18529349D8300565C15 /* ViewController.swift */; };
-		CA7EB1912934A90A00565C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1902934A90A00565C15 /* Constants.swift */; };
 		CA7EB1942934CBA300565C15 /* JokeListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1922934CBA300565C15 /* JokeListItem+CoreDataClass.swift */; };
 		CA7EB1952934CBA300565C15 /* JokeListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1932934CBA300565C15 /* JokeListItem+CoreDataProperties.swift */; };
 		CA7EB1982935E5B000565C15 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1972935E5B000565C15 /* CustomCell.swift */; };
+		CA7EB19B2939E4C800565C15 /* JokeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB19A2939E4C800565C15 /* JokeDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +38,10 @@
 		CA7EB14A2931EEFD00565C15 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		CA7EB14D29347F0600565C15 /* JokeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokeData.xcdatamodel; sourceTree = "<group>"; };
 		CA7EB18529349D8300565C15 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CA7EB1902934A90A00565C15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CA7EB1922934CBA300565C15 /* JokeListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JokeListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CA7EB1932934CBA300565C15 /* JokeListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JokeListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CA7EB1972935E5B000565C15 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		CA7EB19A2939E4C800565C15 /* JokeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +85,7 @@
 				CA50C76C292E05C20083BC22 /* LaunchScreen.storyboard */,
 				CA50C76F292E05C20083BC22 /* Info.plist */,
 				CA7EB14C29347F0600565C15 /* JokeData.xcdatamodeld */,
+				CA7EB19A2939E4C800565C15 /* JokeDataManager.swift */,
 			);
 			path = JokeApp;
 			sourceTree = "<group>";
@@ -136,7 +137,6 @@
 		CA7EB1992935F3CB00565C15 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CA7EB1902934A90A00565C15 /* Constants.swift */,
 				CA50C77F292F281B0083BC22 /* WebService.swift */,
 			);
 			path = Services;
@@ -217,11 +217,11 @@
 				CA7EB1942934CBA300565C15 /* JokeListItem+CoreDataClass.swift in Sources */,
 				CA50C784292F8BAC0083BC22 /* JokeViewModel.swift in Sources */,
 				CA50C77B292F21090083BC22 /* JokeModel.swift in Sources */,
-				CA7EB1912934A90A00565C15 /* Constants.swift in Sources */,
 				CA7EB1952934CBA300565C15 /* JokeListItem+CoreDataProperties.swift in Sources */,
 				CA7EB1492931D55900565C15 /* CustomButton.swift in Sources */,
 				CA7EB14B2931EEFD00565C15 /* ListViewController.swift in Sources */,
 				CA50C762292E05BC0083BC22 /* AppDelegate.swift in Sources */,
+				CA7EB19B2939E4C800565C15 /* JokeDataManager.swift in Sources */,
 				CA7EB14E29347F0600565C15 /* JokeData.xcdatamodeld in Sources */,
 				CA7EB1982935E5B000565C15 /* CustomCell.swift in Sources */,
 				CA50C764292E05BC0083BC22 /* SceneDelegate.swift in Sources */,
