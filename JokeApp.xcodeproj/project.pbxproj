@@ -14,7 +14,6 @@
 		CA50C77B292F21090083BC22 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C77A292F21090083BC22 /* JokeModel.swift */; };
 		CA50C780292F281B0083BC22 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C77F292F281B0083BC22 /* WebService.swift */; };
 		CA50C784292F8BAC0083BC22 /* JokeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C783292F8BAC0083BC22 /* JokeViewModel.swift */; };
-		CA7EB1492931D55900565C15 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB1482931D55900565C15 /* CustomButton.swift */; };
 		CA7EB14B2931EEFD00565C15 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB14A2931EEFD00565C15 /* ListViewController.swift */; };
 		CA7EB14E29347F0600565C15 /* JokeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB14C29347F0600565C15 /* JokeData.xcdatamodeld */; };
 		CA7EB18629349D8300565C15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB18529349D8300565C15 /* ViewController.swift */; };
@@ -34,7 +33,6 @@
 		CA50C77A292F21090083BC22 /* JokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
 		CA50C77F292F281B0083BC22 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		CA50C783292F8BAC0083BC22 /* JokeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewModel.swift; sourceTree = "<group>"; };
-		CA7EB1482931D55900565C15 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CA7EB14A2931EEFD00565C15 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		CA7EB14D29347F0600565C15 /* JokeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokeData.xcdatamodel; sourceTree = "<group>"; };
 		CA7EB18529349D8300565C15 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 		CA7EB1472931D53700565C15 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				CA7EB1482931D55900565C15 /* CustomButton.swift */,
 				CA7EB1972935E5B000565C15 /* CustomCell.swift */,
 			);
 			path = SubViews;
@@ -218,7 +215,6 @@
 				CA50C784292F8BAC0083BC22 /* JokeViewModel.swift in Sources */,
 				CA50C77B292F21090083BC22 /* JokeModel.swift in Sources */,
 				CA7EB1952934CBA300565C15 /* JokeListItem+CoreDataProperties.swift in Sources */,
-				CA7EB1492931D55900565C15 /* CustomButton.swift in Sources */,
 				CA7EB14B2931EEFD00565C15 /* ListViewController.swift in Sources */,
 				CA50C762292E05BC0083BC22 /* AppDelegate.swift in Sources */,
 				CA7EB19B2939E4C800565C15 /* JokeDataManager.swift in Sources */,

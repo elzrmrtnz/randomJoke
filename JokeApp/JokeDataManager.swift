@@ -10,13 +10,14 @@ import CoreData
 
 class JokeDataManager {
     
-    static let shared = JokeDataManager ()
+    static let shared = JokeDataManager()
     
     let container: NSPersistentContainer
+    private let containerName: String = "JokeData"
     @Published var jokeList: [JokeListItem] = []
     
     init() {
-        container = NSPersistentContainer(name: "JokeData")
+        container = NSPersistentContainer(name: containerName)
         container.loadPersistentStores { description, error in
             if let error = error {
                 print("Error Loading Core Data. \(error)")
@@ -27,7 +28,6 @@ class JokeDataManager {
     
     func getAllJokes() {
         let request = NSFetchRequest<JokeListItem>(entityName: "JokeListItem")
-        
         do {
             jokeList = try container.viewContext.fetch(request)
         } catch let error {
@@ -39,13 +39,17 @@ class JokeDataManager {
         let newJoke = JokeListItem(context: container.viewContext)
         newJoke.setup = setup
         newJoke.punchline = punch
-        
+        saveData()
+    }
+    
+    func addJoke(setup: String) {
+        let newJoke = JokeListItem(context: container.viewContext)
+        newJoke.setup = setup
         saveData()
     }
 
     func deleteJoke(item: JokeListItem) {
         container.viewContext.delete(item)
-        
         saveData()
     }
     
@@ -54,8 +58,7 @@ class JokeDataManager {
             try container.viewContext.save()
             getAllJokes()
         } catch {
-            
+            debugPrint(error.localizedDescription)
         }
     }
-    
 }

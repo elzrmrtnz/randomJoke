@@ -13,7 +13,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     let tableView: UITableView = {
         let table = UITableView()
         table.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
-        
         return table
     }()
     
@@ -22,16 +21,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemMint
-        title = "Favorite Joke List"
-        
+        title = "Favorites"
         view.addSubview(tableView)
         coreData.getAllJokes()
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-        
-        
         tableView.rowHeight = 100
         tableView.tableFooterView = UIView()
     }
@@ -45,7 +40,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
         cell.setup.text = model.setup
         cell.puncline.text = model.punchline
-        
         return cell
     }
     
@@ -59,7 +53,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             let model = coreData.jokeList[indexPath.row]
             coreData.deleteJoke(item: model)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            
             tableView.endUpdates()
         }
     }
