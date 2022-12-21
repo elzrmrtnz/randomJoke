@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class CustomCell: UITableViewCell {
-    
     static let identifier = "CustomCell"
 
     let setup = UILabel()

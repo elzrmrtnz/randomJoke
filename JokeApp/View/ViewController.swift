@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemMint
         title = "J🤣keApp"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         setupConstraints()
         setupBinders()
@@ -106,12 +107,12 @@ class ViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
         
             favoriteBtn.heightAnchor.constraint(equalToConstant: 50),
-            favoriteBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
+            favoriteBtn.bottomAnchor.constraint(equalTo: refreshBtn.topAnchor, constant: -5),
             favoriteBtn.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 100),
             favoriteBtn.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -100),
             
             refreshBtn.heightAnchor.constraint(equalToConstant: 50),
-            refreshBtn.topAnchor.constraint(equalTo: favoriteBtn.bottomAnchor, constant: 5),
+            refreshBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200),
             refreshBtn.leadingAnchor.constraint(equalTo: favoriteBtn.leadingAnchor),
             refreshBtn.trailingAnchor.constraint(equalTo: favoriteBtn.trailingAnchor)
         ])

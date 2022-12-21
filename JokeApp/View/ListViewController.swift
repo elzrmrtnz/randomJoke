@@ -17,6 +17,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     private let coreData = JokeDataManager()
+    private let pop = PopUp()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.setup.text = model.setup
         cell.puncline.text = model.punchline
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let model = coreData.jokeList[indexPath.row]
+        pop.titleLabel.text = model.setup
+        pop.subLabel.text = model.punchline
+        tapCell()
+    }
+    
+    @objc func tapCell() {
+        self.view.addSubview(pop)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

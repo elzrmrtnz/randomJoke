@@ -18,12 +18,14 @@ protocol JokeServiceType {
 }
 
 enum StocksError: Error {
-    case invalidServerReponse
+    case invalidServerReponse 
 }
 
 class JokeService: JokeServiceType {
+    private let jokeAPI: String = "https://official-joke-api.appspot.com/random_ten"
+    
     func getRandomJoke() -> AnyPublisher<[JokeModel], Error> {
-        guard let url = URL(string: "https://official-joke-api.appspot.com/random_ten") else {
+        guard let url = URL(string: jokeAPI) else {
              fatalError("Invalid URL")
         }
         return URLSession.shared.dataTaskPublisher(for: url)
